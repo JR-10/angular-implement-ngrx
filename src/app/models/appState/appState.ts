@@ -1,5 +1,5 @@
-import { clientsRes } from "../clients/clients";
+import { ClientsRes } from "../clients/clients";
 
 export interface AppState {
-  clients: clientsRes
+  clients: ClientsRes[]
 }

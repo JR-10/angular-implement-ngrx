@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientsService } from '../../services/clients.service';
-import { clientsRes } from './../../../models/clients/clients';
+import { ClientsRes } from './../../../models/clients/clients';
 
 @Component({
   selector: 'app-client-list',
@@ -20,8 +20,8 @@ export class ClientListComponent implements OnInit {
 
   getClients(): void {
     this.clientService.loadClients().subscribe(
-      (res: clientsRes) => {
-        console.log(res);
+      (res: ClientsRes) => {
+        console.log('valor de la respuesta del servicio: ',res);
       }
     )
   }

@@ -1,4 +1,4 @@
-export interface clientsRes {
+export interface ClientsRes {
   clientId: number;
   name: string;
   lastName: string;
