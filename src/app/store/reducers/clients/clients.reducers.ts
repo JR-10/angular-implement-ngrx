@@ -13,6 +13,7 @@ export const clientsReducer = createReducer(
   initialState,
   on( getClientsSuccess, ( state , {clients} ) => {
     console.log('valor del state en reducers: ', state);
+    console.log('valor del clients en reducers: ', clients);
     state = clients!;
     return state
   })

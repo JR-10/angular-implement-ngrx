@@ -19,10 +19,10 @@ export class ClientsEffects {
     return this.action$
     .pipe(
       ofType(getClients),
-      tap((params: any) => console.log(params)),
+      tap((params: any) => console.log('params:', params)),
       concatMap((action) => {
-        console.log('###', action.parameters);
-        console.log('###', action.type);
+        console.log('action', action.parameters);
+        console.log('action', action.type);
         const {parameters} = action;
         console.log('Parametros:', parameters);
 

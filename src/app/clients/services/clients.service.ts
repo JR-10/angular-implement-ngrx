@@ -17,6 +17,7 @@ export class ClientsService {
 
   // servicio
   loadClients(parameters?: ClientsFilters): Observable<ClientsRes> {
+    console.log('llega hasta el servicio');
     return this.http.get<ClientsRes>(`${environment.url}get-clients`)
   }
 }
