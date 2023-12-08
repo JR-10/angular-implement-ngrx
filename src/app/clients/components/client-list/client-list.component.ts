@@ -13,26 +13,30 @@ import { getClients } from '../../../store/actions/clients/clients.actions';
 })
 export class ClientListComponent implements OnInit {
 
+  // declaracion de variables
+  clients: ClientsRes[] = [];// variable para la tabla
+
   constructor(
-    // private clientService: ClientsService // Anterior con servicio
     private store: Store<AppState>// nueva con ngrx
   ){}
 
   ngOnInit(): void {
-    this.GetClients();
+    this.buildClientsTable();
   }
 
-
-  GetClients(): void {
-    console.log('Disparamos la accion -> action');
-    // ********** Con el servicio directo **********
-    // this.clientService.loadClients().subscribe(
-    //   (res: ClientsRes) => {
-    //     console.log('valor de la respuesta del servicio: ',res);
-    //   }
-    // )
-
-    // ************ con ngrx ************************
-    this.store.dispatch(getClients({ }))
+  buildClientsTable(): void {
+    this.store.select(AppState => AppState.clients).subscribe((resClients) => {
+      console.log('resClients', resClients);
+      this.clients = resClients;
+    })
   }
+
+  deleteClient(clientId: number): void {
+    console.log('vamos a Eliminar el cliente id: ', clientId);
+  }
+
+  updateClient(clientId: number): void {
+    console.log('vamos a Actualicar el cliente id: ', clientId);
+  }
+
 }

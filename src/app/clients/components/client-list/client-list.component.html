@@ -1,1 +1,23 @@
-<p>client-list works!</p>
+<div>
+  <div>
+    <table>
+      <thead>
+        <tr>Nombre</tr>
+        <tr>Apellido</tr>
+        <tr>D.NI</tr>
+        <tr>Edad</tr>
+        <tr>Acciones</tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.name }}</td>
+          <td>{{ client.lastName }}</td>
+          <td>{{ client.dni }}</td>
+          <td>{{ client.age }}</td>
+          <td (click)="deleteClient(client.clientId)">Eliminar</td>
+          <td (click)="updateClient(client.clientId)">Actualizar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
