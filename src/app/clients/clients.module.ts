@@ -6,6 +6,7 @@ import { ClientByIdComponent } from './components/client-by-id/client-by-id.comp
 import { ClientUpdateComponent } from './components/client-update/client-update.component';
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { ClientsRoutingModule } from './clients-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +21,10 @@ import { ClientsRoutingModule } from './clients-routing.module';
   imports: [
     CommonModule,
     ClientsRoutingModule, // rutas del modulo
+
+    // Formulario
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ClientsModule { }
