@@ -20,7 +20,6 @@ export class ClientsComponent implements OnInit {
   }
 
   GetClients(): void {
-    console.log('Disparamos la accion -> action');
     this.store.dispatch(getClients({ })) // traer los datos de un componente hijo
   }
 }

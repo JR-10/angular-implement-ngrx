@@ -17,13 +17,16 @@ export class ClientsService {
 
   // servicio obtener data API
   loadClients(parameters?: ClientsFilters): Observable<ClientsRes> {
-    console.log('llega hasta el servicio');
     return this.http.get<ClientsRes>(`${environment.url}get-clients`)
   }
 
   // servicio crear data API
-  addClients(client: ClientsRes): Observable<ClientsRes> {
-    console.log('llega hasta el servicio');
+  addClient(client: ClientsRes): Observable<ClientsRes> {
     return this.http.post<ClientsRes>(`${environment.url}add-client`, client)
+  }
+
+  // servicio crear data API
+  deleteClient(clientId: number) {
+    return this.http.delete(`${environment.url}delete-client?${clientId}`, {responseType: 'text'})
   }
 }

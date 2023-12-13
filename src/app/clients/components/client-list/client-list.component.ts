@@ -3,7 +3,7 @@ import { ClientsService } from '../../services/clients.service';
 import { ClientsRes } from './../../../models/clients/clients';
 import { AppState } from '../../../models/appState/appState';
 import { Store } from '@ngrx/store';
-import { getClients } from '../../../store/actions/clients/clients.actions';
+import { deleteClient } from '../../../store/actions/clients/clients.actions';
 
 
 @Component({
@@ -26,13 +26,12 @@ export class ClientListComponent implements OnInit {
 
   buildClientsTable(): void {
     this.store.select(AppState => AppState.clients).subscribe((resClients) => {
-      console.log('resClients', resClients);
       this.clients = resClients;
     })
   }
 
   deleteClient(clientId: number): void {
-    console.log('vamos a Eliminar el cliente id: ', clientId);
+    this.store.dispatch(deleteClient({clientId: clientId}));
   }
 
   updateClient(clientId: number): void {

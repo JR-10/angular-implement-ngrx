@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core"
 import { ClientsService } from './../../../clients/services/clients.service';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { getClients, getClientsSuccess, addClient, addClientSuccess } from '../../actions/clients/clients.actions';
+import { getClients, getClientsSuccess, addClient, addClientSuccess, deleteClient, deleteClientSuccess } from '../../actions/clients/clients.actions';
 import { catchError, concatMap, map, mergeMap, of, tap } from "rxjs";
 
 @Injectable()
@@ -22,11 +22,7 @@ export class ClientsEffects {
       ofType(getClients),
       tap((params: any) => console.log('params:', params)),
       concatMap((action) => {
-        console.log('action', action.parameters);
-        console.log('action', action.type);
         const {parameters} = action;
-        console.log('Parametros:', parameters);
-
         return this.clienstService.loadClients(parameters)
         .pipe(
           map((clients: any) => getClientsSuccess({clients})),
@@ -42,13 +38,28 @@ export class ClientsEffects {
     .pipe(
       ofType(addClient),
       mergeMap((action) => {
-        console.log('action: ', action.client);
         const { client } = action;
-        return this.clienstService.addClients(client)
+        return this.clienstService.addClient(client)
         .pipe(
           map((data) => {
-            console.log('data respuesta del servicio: ', data);
             return addClientSuccess({client})
+          })
+        )
+      })
+    )
+  })
+
+  // efects Crear Cliente
+  deleteClient$ = createEffect(() => {
+    return this.action$
+    .pipe(
+      ofType(deleteClient),
+      mergeMap((action) => {
+        const { clientId } = action;
+        return this.clienstService.deleteClient(clientId)
+        .pipe(
+          map((data) => {
+            return deleteClientSuccess({clientId : clientId})
           })
         )
       })

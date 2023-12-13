@@ -13,12 +13,21 @@ export const getClientsSuccess = createAction(
 )
 
 export const addClient = createAction(
-  '[Clients] Add clients',
+  '[Clients] Add client',
   props<{ client : ClientsRes }>()
 )
 
-
 export const addClientSuccess = createAction(
-  '[Clients] Add clients success',
+  '[Clients] Add client success',
   props<{ client : ClientsRes }>()
+)
+
+export const deleteClient = createAction(
+  '[Clients]  delete client',
+  props<{ clientId : number }>()
+)
+
+export const deleteClientSuccess = createAction(
+  '[Clients] delete client success',
+  props<{ clientId : number }>()
 )
