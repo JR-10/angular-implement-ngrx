@@ -4,6 +4,7 @@ import { ClientsRes } from './../../../models/clients/clients';
 import { AppState } from '../../../models/appState/appState';
 import { Store } from '@ngrx/store';
 import { deleteClient } from '../../../store/actions/clients/clients.actions';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ClientListComponent implements OnInit {
   clients: ClientsRes[] = [];// variable para la tabla
 
   constructor(
-    private store: Store<AppState>// nueva con ngrx
+    private store: Store<AppState>, // nueva con ngrx
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class ClientListComponent implements OnInit {
 
   updateClient(clientId: number): void {
     console.log('vamos a Actualicar el cliente id: ', clientId);
+    if(clientId) this.router.navigate(['clients/clientUpdate', {clientId: clientId}]);
   }
 
 }

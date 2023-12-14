@@ -1,1 +1,60 @@
-<p>client-update works!</p>
+<div class="client-main_container" >
+  <div>
+      <span>
+          Nuevo Cliente
+      </span>
+  </div>
+  <form [formGroup]="clientForm" (ngSubmit)="updateNewClient()" >
+      <div>
+          <input
+              type="text"
+              placeholder="Nombre"
+              [ngModel] = "client.name"
+              formControlName="name"
+              (input)="checkInputValue($event)"
+          >
+          <span style="color:red" *ngIf="this.clientForm.get('name')?.errors?.['required']" >
+              Campo requerido*
+          </span>
+      </div>
+      <div>
+          <input
+              type="text"
+              placeholder="Apellidos"
+              [ngModel] = "client.lastName"
+              formControlName="lastName"
+              (input)="checkInputValue($event)"
+          >
+          <span style="color:red" *ngIf="this.clientForm.get('lastName')?.errors?.['required']" >
+              Campo requerido*
+          </span>
+      </div>
+      <div>
+          <input
+              type="text"
+              placeholder="DNI"
+              [ngModel] = "client.dni"
+              formControlName="dni"
+              (input)="checkInputValue($event)"
+          >
+          <span style="color:red" *ngIf="this.clientForm.get('dni')?.errors?.['required']" >
+              Campo requerido*
+          </span>
+      </div>
+      <div>
+          <input
+              type="text"
+              placeholder="Edad"
+              [ngModel] = "client.age"
+              formControlName="age"
+              (input)="checkInputValue($event)"
+          >
+          <span style="color:red" *ngIf="this.clientForm.get('age')?.errors?.['required']" >
+              Campo requerido*
+          </span>
+     </div>
+     <div>
+      <button type="submit" >Crea Cliente</button>
+     </div>
+  </form>
+</div>
